@@ -21,8 +21,8 @@ function Login() {
     };
 
     const handleRegistrationClick = (e) => {
-      e.preventDefault(); // Prevent default behavior of anchor tag
-      window.location.href = '/register'; // Redirect to registration page
+      e.preventDefault(); 
+      window.location.href = 'register'; // Redirect to registration page
     };
   
     const handleSubmit = async (e) => {
