@@ -20,7 +20,10 @@ function Login() {
       });
     };
 
-  
+    const handleRegistrationClick = (e) => {
+      e.preventDefault(); 
+      window.location.href = '/register'; // Redirect to registration page
+    };
   
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -56,6 +59,7 @@ function Login() {
       
     <div>
       <div className='header'><h1>User Login</h1></div>
+     
       <div className="box">
         <h1>user <i className="fa fa-user-circle" aria-hidden="true"></i></h1>
       <form onSubmit={handleSubmit}>
@@ -74,7 +78,7 @@ function Login() {
         <button type="submit" >Forget_Password</button>
       </form>
       <br/>
-      <a href='http://localhost:5173/register'> If dont have an account? Click here to Register</a>
+      <a  onClick={handleRegistrationClick}>Dont have an account? Click here to Register!</a>
       </div>
       </div>
     );
