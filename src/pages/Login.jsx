@@ -2,8 +2,6 @@
 import { useState } from 'react';
 import { backendurl } from '../config';
 
-
-
 function Login() {
 
   const initialFormData = {
@@ -18,11 +16,6 @@ function Login() {
         ...formData,
         [name]: value
       });
-    };
-
-    const handleRegistrationClick = (e) => {
-      e.preventDefault(); 
-      window.location.href = '/register'; // Redirect to registration page
     };
   
     const handleSubmit = async (e) => {
@@ -78,7 +71,7 @@ function Login() {
         <button type="submit" >Forget_Password</button>
       </form>
       <br/>
-      <a  onClick={handleRegistrationClick}>Dont have an account? Click here to Register!</a>
+      <a href='http://localhost:5173/register'>Dont have an account? Click here to Register!</a>
       </div>
       </div>
     );
