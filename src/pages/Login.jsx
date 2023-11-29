@@ -74,7 +74,7 @@ function Login() {
         <button type="submit" >Forget_Password</button>
       </form>
       <br/>
-      <a href='/register'> If dont have an account? Click here to Register</a>
+      <a href='http://localhost:5173/register'> If dont have an account? Click here to Register</a>
       </div>
       </div>
     );
