@@ -12,7 +12,7 @@ return(
     <BrowserRouter>
     <Routes>
       <Route>
-      <Route index path='/' element={<Login />} />
+      <Route  path='/' element={<Login />} />
       <Route  path='/register' element={<Register />} />
       <Route  path='/password' element={<Password />} />
       </Route>
