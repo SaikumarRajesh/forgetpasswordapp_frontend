@@ -1,5 +1,5 @@
 
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useCallback} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { backendurl } from '../config';
@@ -18,17 +18,45 @@ function Password() {
   const expires = params.get('expires')
 
   const navigate = useNavigate();
-  useEffect(() => {
-    const islinkExpired = expires ? new Date(parseInt(expires, 10)) < new Date() : false;
+  // useEffect(() => {
+  //   const islinkExpired = expires ? new Date(parseInt(expires, 10)) < new Date() : false;
 
-    if (islinkExpired) {
-      alert('The password reset link has expired. Please request a new link.');
+  //   if (islinkExpired) {
+  //     alert('The password reset link has expired. Please request a new link.');
 
-      setTimeout(() => {
-        navigate('/'); 
-      }, 100);
+  //     setTimeout(() => {
+  //       navigate('/'); 
+  //     }, 100);
+  //   }
+  // }, [expires, navigate]);
+  const checkExpiration = useCallback(() => {
+    const expirationTime = localStorage.getItem('expirationTime');
+    
+    if (expirationTime) {
+      const currentTime = new Date().getTime();
+      const timeDifference = expirationTime - currentTime;
+
+      if (timeDifference <= 0) {
+        alert('The password reset link has expired. Please request a new link.');
+        navigate('/');
+      } else {
+        setTimeout(() => {
+          alert('The password reset link has expired. Redirecting to home page.');
+          navigate('/');
+        }, timeDifference);
+      }
     }
-  }, [expires, navigate]);
+  }, [navigate]);
+
+  useEffect(() => {
+    const expirationTime = expires ? new Date(parseInt(expires, 10)).getTime() : null;
+
+    if (expirationTime) {
+      localStorage.setItem('expirationTime', expirationTime);
+      checkExpiration();
+    }
+  }, [expires, checkExpiration]);
+  
 
 
   const handleInputChange = (e) => {
