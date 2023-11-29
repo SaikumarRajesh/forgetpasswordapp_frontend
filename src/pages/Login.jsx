@@ -56,7 +56,6 @@ function Login() {
       
     <div>
       <div className='header'><h1>User Login</h1></div>
-     
       <div className="box">
         <h1>user <i className="fa fa-user-circle" aria-hidden="true"></i></h1>
       <form onSubmit={handleSubmit}>
@@ -75,7 +74,7 @@ function Login() {
         <button type="submit" >Forget_Password</button>
       </form>
       <br/>
-      <a href='/register'>Dont have an account? Click here to Register!</a>
+      <a href='/register'> If dont have an account? Click here to Register!</a>
       </div>
       </div>
     );
