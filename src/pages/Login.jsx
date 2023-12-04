@@ -37,7 +37,6 @@ function Login() {
         alert('User not found! Register now');
         localStorage.clear();
     
-    
       } else {
         alert('User Found, Password reset link emailed');
         localStorage.setItem('user',JSON.stringify(data))
